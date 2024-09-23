@@ -7,7 +7,7 @@ use Attribute;
 #[Attribute]
 class CostOfService
 {
-    public function __construct(public int $cost) {}
+    public function __construct(protected int $cost) {}
 
     public function getCost(): int
     {
