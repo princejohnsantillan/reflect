@@ -36,38 +36,38 @@ class Reflect
     }
 
     /** @return ReflectionAttribute<BackedEnum|UnitEnum>[] */
-    public function getAttributes(?string $name = null)
+    public function getAttributes(?string $attribute = null)
     {
-        return $this->attributes[$name] ??= $this->reflection->getAttributes($name);
+        return $this->attributes[$attribute] ??= $this->reflection->getAttributes($attribute);
     }
 
-    public function getAttributesCount(?string $name = null): int
+    public function getAttributesCount(?string $attribute = null): int
     {
-        return $this->attributesCount[$name] ??= count($this->getAttributes($name));
+        return $this->attributesCount[$attribute] ??= count($this->getAttributes($attribute));
     }
 
     /** @return ReflectionAttribute<BackedEnum|UnitEnum> */
-    public function getSoleAttribute(?string $name = null)
+    public function getSoleAttribute(?string $attribute = null)
     {
-        $attributes = $this->getAttributes($name);
+        $attributes = $this->getAttributes($attribute);
 
         if (count($attributes) !== 1) {
-            throw SoleAttributeException::of($name);
+            throw SoleAttributeException::of($attribute);
         }
 
         return $attributes[0];
     }
 
     /** @return ReflectionAttribute<BackedEnum|UnitEnum>|null */
-    public function getFirstAttribute(?string $name = null)
+    public function getFirstAttribute(?string $attribute = null)
     {
-        return $this->getAttributes($name)[0] ?? null;
+        return $this->getAttributes($attribute)[0] ?? null;
     }
 
     /** @return ReflectionAttribute<BackedEnum|UnitEnum>|null */
-    public function getLastAttribute(?string $name = null)
+    public function getLastAttribute(?string $attribute = null)
     {
-        return $this->getAttributes($name)[$this->getAttributesCount($name) - 1] ?? null;
+        return $this->getAttributes($attribute)[$this->getAttributesCount($attribute) - 1] ?? null;
     }
 
     /**
@@ -75,12 +75,12 @@ class Reflect
      *
      * @template TClass
      *
-     * @param  class-string<TClass>|null  $name
+     * @param  class-string<TClass>|null  $attribute
      * @return TClass|mixed
      */
-    public function getSoleAttributeInstance(?string $name = null)
+    public function getSoleAttributeInstance(?string $attribute = null)
     {
-        return $this->getSoleAttribute($name)->newInstance();
+        return $this->getSoleAttribute($attribute)->newInstance();
     }
 
     /**
@@ -88,12 +88,12 @@ class Reflect
      *
      * @template TClass
      *
-     * @param  class-string<TClass>|null  $name
+     * @param  class-string<TClass>|null  $attribute
      * @return TClass|null|mixed
      */
-    public function getFirstAttributeInstance(?string $name = null)
+    public function getFirstAttributeInstance(?string $attribute = null)
     {
-        return $this->getFirstAttribute($name)?->newInstance();
+        return $this->getFirstAttribute($attribute)?->newInstance();
     }
 
     /**
@@ -101,11 +101,11 @@ class Reflect
      *
      * @template TClass
      *
-     * @param  class-string<TClass>|null  $name
+     * @param  class-string<TClass>|null  $attribute
      * @return TClass|null|mixed
      */
-    public function getLastAttributeInstance(?string $name = null)
+    public function getLastAttributeInstance(?string $attribute = null)
     {
-        return $this->getLastAttribute($name)?->newInstance();
+        return $this->getLastAttribute($attribute)?->newInstance();
     }
 }
