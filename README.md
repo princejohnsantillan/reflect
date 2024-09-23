@@ -10,16 +10,12 @@ Without `Reflect`
     {
         $ref = new ReflectionEnumBackedCase(self::class, $this->name);
 
-        $attributes = $ref->getAttributes(ServicePayload::class);
-
-        if (count($attributes) !== 1) {
-            throw new LogicException('A single Service Payload attribute is required.');
-        }
+        $attributes = $ref->getAttributes(ServicePayload::class);        
 
         /** @var ServicePayload $attribute */
         $attribute = $attributes[0]->newInstance();
 
-        return $attribute->payload;
+        return $attribute->getPayload();
     }
 
 ```
@@ -29,8 +25,8 @@ With `Reflect`
     public function payload(): Payload
     {
         return Reflect::on($this)
-            ->getSoleAttributeInstance(ServicePayload::class)
-            ->payload;
+            ->getAttributeInstance(ServicePayload::class)
+            ->getPayload();
     }
 
 ```
