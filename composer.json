@@ -2,17 +2,23 @@
     "name": "princejohnsantillan/reflect",
     "description": "Clearer API for PHP Reflection",
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "PrinceJohn\\Reflect\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Prince John Santillan",
             "email": "mail@princejohnsantillan.net"
         }
     ],
+    "keywords": [
+        "reflect",
+        "reflection",
+        "enum",
+        "attribute"
+    ],
+    "autoload": {
+        "psr-4": {
+            "PrinceJohn\\Reflect\\": "src/"
+        }
+    },
     "require": {
         "php" : "^8.1"
     }
