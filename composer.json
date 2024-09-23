@@ -19,12 +19,18 @@
             "PrinceJohn\\Reflect\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Reflect\\Test\\": "tests/"
+        }
+    },
     "require": {
         "php": "^8.1"
     },
     "require-dev": {
         "phpstan/phpstan": "^1.12",
-        "laravel/pint": "^1.17"
+        "laravel/pint": "^1.17",
+        "pestphp/pest": "^3.1"
     },
     "scripts": {
         "lint": [
@@ -33,9 +39,18 @@
         "analyse": [
             "./vendor/bin/phpstan analyse"
         ],
+        "test": [
+            "./vendor/bin/pest --coverage"
+        ],
         "review": [
             "@lint",
-            "@analyse"
+            "@analyse",
+            "@test"
         ]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
     }
 }

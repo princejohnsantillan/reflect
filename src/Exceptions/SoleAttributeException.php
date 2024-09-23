@@ -8,6 +8,10 @@ final class SoleAttributeException extends Exception
 {
     public static function of(?string $attribute): static
     {
-        return new self("One {$attribute} attribute was expected.");
+        $message = is_null($attribute)
+            ? 'One attribute was expected.'
+            : "One {$attribute} attribute was expected.";
+
+        return new self($message);
     }
 }
