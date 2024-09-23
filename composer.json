@@ -20,6 +20,22 @@
         }
     },
     "require": {
-        "php" : "^8.1"
+        "php": "^8.1"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.12",
+        "laravel/pint": "^1.17"
+    },
+    "scripts": {
+        "lint": [
+            "./vendor/bin/pint"
+        ],
+        "analyse": [
+            "./vendor/bin/phpstan analyse"
+        ],
+        "review": [
+            "@lint",
+            "@analyse"
+        ]
     }
 }

@@ -12,7 +12,7 @@ use UnitEnum;
 class Reflect
 {
     /**
-     * @var ReflectionAttribute
+     * @var array<string, ReflectionAttribute<BackedEnum|UnitEnum>[]>
      */
     protected array $attributes = [];
 
