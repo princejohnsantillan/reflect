@@ -6,4 +6,6 @@ enum Service
 {
     case EMAIL;
     case SMS;
+
+    case LOG;
 }
