@@ -31,4 +31,4 @@ With `Reflect`
 
 ```
 
-Note: `getSoleAttributeInstance` already provides IDE support with template doc blocks.
+Note: `getAttributeInstance` already provides IDE support with template doc blocks.
