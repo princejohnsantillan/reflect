@@ -30,22 +30,31 @@
     "require-dev": {
         "phpstan/phpstan": "^1.12",
         "laravel/pint": "^1.17",
-        "pestphp/pest": "^3.1"
+        "pestphp/pest": "^3.1",
+        "rector/rector": "^1.2"
     },
     "scripts": {
+        "rectify": [
+            "./vendor/bin/rector"
+        ],
         "lint": [
             "./vendor/bin/pint"
         ],
         "analyse": [
             "./vendor/bin/phpstan analyse"
         ],
-        "test": [
-            "./vendor/bin/pest --coverage"
+        "test-coverage": [
+            "./vendor/bin/pest --coverage --parallel"
+        ],
+        "test-mutation": [
+            "./vendor/bin/pest --mutate --parallel"
         ],
         "review": [
+            "@rectify",
             "@lint",
             "@analyse",
-            "@test"
+            "@test-coverage",
+            "@test-mutation"
         ]
     },
     "config": {
