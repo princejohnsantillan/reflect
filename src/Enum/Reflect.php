@@ -3,7 +3,7 @@
 namespace PrinceJohn\Reflect\Enum;
 
 use BackedEnum;
-use PrinceJohn\Reflect\Exceptions\AttributeNotFound;
+use PrinceJohn\Reflect\Exceptions\AttributeNotFoundException;
 use ReflectionEnumBackedCase;
 use ReflectionEnumUnitCase;
 use UnitEnum;
@@ -56,14 +56,14 @@ class Reflect
      * @param  class-string<TAttribute>  $attribute
      * @return TAttribute
      *
-     * @throws AttributeNotFound
+     * @throws AttributeNotFoundException
      */
     public function getOrFailAttributeInstance(string $attribute)
     {
         $instance = $this->getAttributeInstance($attribute);
 
         if ($instance === null) {
-            throw new AttributeNotFound("{$attribute} not found.");
+            throw new AttributeNotFoundException("{$attribute} not found.");
         }
 
         return $instance;
