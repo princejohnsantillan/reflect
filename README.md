@@ -1,34 +1,87 @@
 # Reflect
 
-Clearer API for PHP Reflection.
+Clearer API for PHP Attributes and Reflection.
 
 ### Example
 
-Without `Reflect`
+BEFORE:
 ```php
-    public function payload(): Payload
-    {
-        $ref = new ReflectionEnumBackedCase(self::class, $this->name);
-
-        $attributes = $ref->getAttributes(ServicePayload::class);        
-
-        /** @var ServicePayload $attribute */
-        $attribute = $attributes[0]->newInstance();
-
-        return $attribute->getPayload();
+enum Plan: string{
+    case FREE = 'free';
+    case HOBBY = 'hobby';
+    case PRO = 'professional';
+    case TEAM = 'team';
+    case ENTERPRISE = 'enterprise';
+    
+    public function price(): int {
+        return match($this){
+            static::FREE => 0,
+            static::HOBBY => 10,
+            static::PRO => 20,
+            static::TEAM => 50,
+            static::ENTERPRISE = 200
+        };
     }
+    
+    public function color(): string {
+        return match($this){
+            static::FREE => 'yellow',
+            static::HOBBY => 'orange',
+            static::PRO => 'blue',
+            static::TEAM => 'silver',
+            static::ENTERPRISE = 'gold'
+        };
+    }
+}
 
 ```
 
-With `Reflect`
+AFTER:
 ```php
-    public function payload(): Payload
-    {
-        return Reflect::on($this)
-            ->getAttributeInstance(ServicePayload::class)
-            ->getPayload();
+use PrinceJohn\Reflect\Traits\HasEnumTarget;
+
+#[Attribute]
+class Price{
+    use HasEnumTarget;
+    
+    public function __construct(public int $price) {}
+}
+
+#[Attribute]
+class Color{
+    use HasEnumTarget;
+    
+    public function __construct(public string $color) {}
+}
+
+enum Plan: string{
+    #[Price(0)]
+    #[Color('yellow')]
+    case FREE = 'free';
+    
+    #[Price(10)]
+    #[Color('yellow')]
+    case HOBBY = 'hobby';
+    
+    #[Price(20)]
+    #[Color('yellow')]
+    case PRO = 'professional';
+    
+    #[Price(50)]
+    #[Color('silver')]
+    case TEAM = 'team';
+    
+    #[Price(200)]
+    #[Color('gold')]
+    case ENTERPRISE = 'enterprise';
+    
+    public function price(): int {
+        return Price::onEnum($this)->price;            
     }
+    
+    public function color(): string {
+        return Color::onEnum($this)->color;
+    }
+}
 
 ```
-
-Note: `getAttributeInstance` already provides IDE support with template doc blocks.
