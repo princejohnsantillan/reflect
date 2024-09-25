@@ -48,19 +48,28 @@ AFTER:
 ```php
 use PrinceJohn\Reflect\Traits\HasEnumTarget;
 
-#[Attribute]
+#[\Attribute]
 class Price{
     use HasEnumTarget;
     
     public function __construct(public int $price) {}
 }
+```
 
-#[Attribute]
+```php
+use PrinceJohn\Reflect\Traits\HasEnumTarget;
+
+#[\Attribute]
 class Color{
     use HasEnumTarget;
     
     public function __construct(public string $color) {}
 }
+
+```
+
+```php
+use PrinceJohn\Reflect\Enum\Reflect;
 
 enum Plan: string{
     #[Price(0)]
