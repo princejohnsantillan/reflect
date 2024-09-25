@@ -1,6 +1,6 @@
 {
     "name": "princejohnsantillan/reflect",
-    "description": "Clearer API for PHP Reflection",
+    "description": "Clearer API for PHP Attributes and Reflection.",
     "license": "MIT",
     "authors": [
         {
