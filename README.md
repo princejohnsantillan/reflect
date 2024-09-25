@@ -84,10 +84,14 @@ enum Plan: string{
     case ENTERPRISE = 'enterprise';
     
     public function price(): int {
-        return Price::onEnum($this)->price;            
+        // Demonstrating usage via the Reflect class        
+        return Reflect::on($this)
+            ->getAttributeInstance(Price::class)
+            ->price;            
     }
     
     public function color(): string {
+        // Demonstrating the usage via the HasEnumTarget trait
         return Color::onEnum($this)->color;
     }
 }
