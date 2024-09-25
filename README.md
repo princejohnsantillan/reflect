@@ -2,7 +2,15 @@
 
 Clearer API for PHP Attributes and Reflection.
 
-### Example
+## Requirement
+PHP 8.1 or higher
+
+## Installation
+```bash
+composer require princejohnsantillan/reflect
+```
+
+## Example
 
 BEFORE:
 ```php
