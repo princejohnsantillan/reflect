@@ -5,3 +5,4 @@ composer.lock
 phpstan.neon
 phpunit.xml
 .idea
+.DS_Store
