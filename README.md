@@ -77,11 +77,11 @@ enum Plan: string{
     case FREE = 'free';
     
     #[Price(10)]
-    #[Color('yellow')]
+    #[Color('orange')]
     case HOBBY = 'hobby';
     
     #[Price(20)]
-    #[Color('yellow')]
+    #[Color('blue')]
     case PRO = 'professional';
     
     #[Price(50)]
