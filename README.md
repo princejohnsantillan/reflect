@@ -100,7 +100,7 @@ enum Plan: string{
     }
     
     public function color(): string {
-        // Demonstrating the usage via the HasEnumTarget trait
+        // Demonstrating usage via the HasEnumTarget trait
         return Color::onEnum($this)->color;
     }
 }
