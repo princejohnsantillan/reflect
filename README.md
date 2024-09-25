@@ -85,3 +85,6 @@ enum Plan: string{
 }
 
 ```
+
+>[!NOTE]
+> Alternatively, just return the attribute class, that way you can have more functionality at your disposal. 
