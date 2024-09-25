@@ -1,9 +1,9 @@
 <?php
 
-namespace Reflect\Test\Fixtures\UnitEnums\Attributes;
+namespace Reflect\Tests\Fixtures\UnitEnums\Attributes;
 
 use Attribute;
-use Reflect\Test\Fixtures\UnitEnums\Service;
+use Reflect\Tests\Fixtures\UnitEnums\Service;
 
 #[Attribute]
 class KindOfService

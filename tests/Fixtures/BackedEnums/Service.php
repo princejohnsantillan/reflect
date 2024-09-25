@@ -1,6 +1,6 @@
 <?php
 
-namespace Reflect\Test\Fixtures\BackedEnums;
+namespace Reflect\Tests\Fixtures\BackedEnums;
 
 enum Service: string
 {

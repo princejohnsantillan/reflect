@@ -21,7 +21,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Reflect\\Test\\": "tests/"
+            "Reflect\\Tests\\": "tests/"
         }
     },
     "require": {

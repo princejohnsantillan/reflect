@@ -1,9 +1,9 @@
 <?php
 
-namespace Reflect\Test\Fixtures\BackedEnums;
+namespace Reflect\Tests\Fixtures\BackedEnums;
 
-use Reflect\Test\Fixtures\BackedEnums\Attributes\CostOfService;
-use Reflect\Test\Fixtures\BackedEnums\Attributes\KindOfService;
+use Reflect\Tests\Fixtures\BackedEnums\Attributes\CostOfService;
+use Reflect\Tests\Fixtures\BackedEnums\Attributes\KindOfService;
 
 enum Provider: string
 {

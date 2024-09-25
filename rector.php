@@ -8,4 +8,4 @@ return RectorConfig::configure()
     ])
     ->withPhpSets()
     ->withPhpPolyfill()
-    ->withPreparedSets(deadCode: true, strictBooleans: true, typeDeclarations: true);
+    ->withPreparedSets(deadCode: true, strictBooleans: true);

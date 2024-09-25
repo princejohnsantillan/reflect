@@ -1,6 +1,6 @@
 <?php
 
-namespace Reflect\Test\Fixtures\UnitEnums;
+namespace Reflect\Tests\Fixtures\UnitEnums;
 
 enum Service
 {

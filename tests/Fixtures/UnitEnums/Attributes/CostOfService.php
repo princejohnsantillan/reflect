@@ -1,6 +1,6 @@
 <?php
 
-namespace Reflect\Test\Fixtures\UnitEnums\Attributes;
+namespace Reflect\Tests\Fixtures\UnitEnums\Attributes;
 
 use Attribute;
 
