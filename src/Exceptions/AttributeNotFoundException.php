@@ -4,4 +4,4 @@ namespace PrinceJohn\Reflect\Exceptions;
 
 use Exception;
 
-class AttributeNotFound extends Exception {}
+class AttributeNotFoundException extends Exception {}

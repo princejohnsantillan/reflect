@@ -1,7 +1,7 @@
 <?php
 
 use PrinceJohn\Reflect\Enum\Reflect;
-use PrinceJohn\Reflect\Exceptions\AttributeNotFound;
+use PrinceJohn\Reflect\Exceptions\AttributeNotFoundException;
 use Reflect\Tests\Fixtures\BackedEnums;
 use Reflect\Tests\Fixtures\UnitEnums;
 
@@ -79,7 +79,7 @@ it('will thrown a not found exception when getting an instance of undeclared att
     Reflect::on($providerEnum)
         ->getOrFailAttributeInstance(BackedEnums\Attributes\CostOfService::class);
 
-})->throws(AttributeNotFound::class, "Reflect\Tests\Fixtures\BackedEnums\Attributes\CostOfService not found.");
+})->throws(AttributeNotFoundException::class, "Reflect\Tests\Fixtures\BackedEnums\Attributes\CostOfService not found.");
 
 it('will thrown a not found exception when getting an instance of undeclared attribute in unit enum', function () {
     $providerEnum = UnitEnums\Provider::ARRAY;
@@ -87,7 +87,7 @@ it('will thrown a not found exception when getting an instance of undeclared att
     Reflect::on($providerEnum)
         ->getOrFailAttributeInstance(UnitEnums\Attributes\KindOfService::class);
 
-})->throws(AttributeNotFound::class, "Reflect\Tests\Fixtures\UnitEnums\Attributes\KindOfService not found.");
+})->throws(AttributeNotFoundException::class, "Reflect\Tests\Fixtures\UnitEnums\Attributes\KindOfService not found.");
 
 it('can reflect on backed enum', function () {
     $providerEnum = BackedEnums\Provider::LOG;
