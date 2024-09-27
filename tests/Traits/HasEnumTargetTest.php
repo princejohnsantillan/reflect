@@ -46,3 +46,35 @@ it('can get an instance of the attribute using the unit enum provided or fail if
     expect(fn () => BackedEnums\Attributes\KindOfService::onEnum(UnitEnums\Provider::SENDGRID))
         ->toThrow(AttributeNotFoundException::class);
 });
+
+it('can get all attribute instances of a repeatable attribute on a backed enum', function () {
+    $serviceEnum = BackedEnums\Service::EMAIL;
+
+    $attributes = BackedEnums\Attributes\Tag::allOnEnum($serviceEnum);
+
+    expect($attributes)->toBeArray();
+
+    foreach ($attributes as $attribute) {
+        expect($attribute)->toBeInstanceOf(BackedEnums\Attributes\Tag::class);
+    }
+
+    $serviceEnum = BackedEnums\Service::SMS;
+
+    expect(BackedEnums\Attributes\Tag::allOnEnum($serviceEnum))->toBe([]);
+});
+
+it('can get all attribute instances of a repeatable attribute on a unit enum', function () {
+    $serviceEnum = UnitEnums\Service::SMS;
+
+    $attributes = UnitEnums\Attributes\Tag::allOnEnum($serviceEnum);
+
+    expect($attributes)->toBeArray();
+
+    foreach ($attributes as $attribute) {
+        expect($attribute)->toBeInstanceOf(UnitEnums\Attributes\Tag::class);
+    }
+
+    $serviceEnum = UnitEnums\Service::EMAIL;
+
+    expect(UnitEnums\Attributes\Tag::allOnEnum($serviceEnum))->toBe([]);
+});

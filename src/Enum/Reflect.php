@@ -68,4 +68,26 @@ class Reflect
 
         return $instance;
     }
+
+    /**
+     * Get all attribute instances.
+     *
+     * @template TAttribute
+     *
+     * @param  class-string<TAttribute>  $attribute
+     * @return array<TAttribute>
+     */
+    public function getAllAttributeInstances(string $attribute)
+    {
+        $attributes = $this->reflection->getAttributes($attribute);
+
+        $instances = [];
+
+        foreach ($attributes as $attribute) {
+            $instances[] = $attribute->newInstance();
+        }
+
+        return $instances;
+
+    }
 }

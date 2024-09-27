@@ -100,3 +100,43 @@ it('can reflect on unit enum', function () {
 
     expect(Reflect::on($providerEnum)->reflection)->toBeInstanceOf(ReflectionEnumUnitCase::class);
 });
+
+it('can get all attribute instances of a repeatable attribute on a backed enum', function () {
+    $serviceEnum = BackedEnums\Service::EMAIL;
+
+    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(BackedEnums\Attributes\Tag::class);
+
+    expect($attributes)->toBeArray();
+
+    foreach ($attributes as $attribute) {
+        expect($attribute)->toBeInstanceOf(BackedEnums\Attributes\Tag::class);
+    }
+});
+
+it('can get all attribute instances of a repeatable attribute on a unit enum', function () {
+    $serviceEnum = UnitEnums\Service::SMS;
+
+    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(UnitEnums\Attributes\Tag::class);
+
+    expect($attributes)->toBeArray();
+
+    foreach ($attributes as $attribute) {
+        expect($attribute)->toBeInstanceOf(UnitEnums\Attributes\Tag::class);
+    }
+});
+
+it('returns an empty array when repeatable attributes are missing from a backed enum', function () {
+    $serviceEnum = BackedEnums\Service::SMS;
+
+    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(BackedEnums\Attributes\Tag::class);
+
+    expect($attributes)->toBe([]);
+});
+
+it('returns an empty array when repeatable attributes are missing from a unit enum', function () {
+    $serviceEnum = UnitEnums\Service::EMAIL;
+
+    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(UnitEnums\Attributes\Tag::class);
+
+    expect($attributes)->toBe([]);
+});
