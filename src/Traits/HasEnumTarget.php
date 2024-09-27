@@ -34,4 +34,12 @@ trait HasEnumTarget
     {
         return Reflect::on($enum)->getOrFailAttributeInstance(static::class);
     }
+
+    /**
+     * @return array<static>
+     */
+    public static function allOnEnum(BackedEnum|UnitEnum $enum): array
+    {
+        return Reflect::on($enum)->getAllAttributeInstances(static::class);
+    }
 }
