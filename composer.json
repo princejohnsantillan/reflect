@@ -36,19 +36,19 @@
     },
     "scripts": {
         "rectify": [
-            "./vendor/bin/rector"
+            "rector"
         ],
         "lint": [
-            "./vendor/bin/pint"
+            "pint"
         ],
         "analyse": [
-            "./vendor/bin/phpstan analyse"
+            "phpstan analyse"
         ],
         "test-coverage": [
-            "./vendor/bin/pest --coverage --parallel"
+            "pest --coverage --parallel"
         ],
         "test-mutation": [
-            "./vendor/bin/pest --mutate --parallel"
+            "pest --mutate --parallel"
         ],
         "review": [
             "@rectify",
