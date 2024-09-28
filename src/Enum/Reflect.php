@@ -79,15 +79,9 @@ class Reflect
      */
     public function getAllAttributeInstances(string $attribute)
     {
-        $attributes = $this->reflection->getAttributes($attribute);
-
-        $instances = [];
-
-        foreach ($attributes as $attribute) {
-            $instances[] = $attribute->newInstance();
-        }
-
-        return $instances;
-
+        return array_map(
+            fn ($ref) => $ref->newInstance(),
+            $this->reflection->getAttributes($attribute)
+        );
     }
 }

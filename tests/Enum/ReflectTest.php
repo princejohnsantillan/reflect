@@ -5,7 +5,7 @@ use PrinceJohn\Reflect\Exceptions\AttributeNotFoundException;
 use Reflect\Tests\Fixtures\BackedEnums;
 use Reflect\Tests\Fixtures\UnitEnums;
 
-covers(Reflect::class);
+mutates(Reflect::class);
 
 it('can check existence of attribute in a backed enum', function () {
     $providerEnum = BackedEnums\Provider::SENDGRID;
@@ -128,7 +128,7 @@ it('can get all attribute instances of a repeatable attribute on a unit enum', f
 it('returns an empty array when repeatable attributes are missing from a backed enum', function () {
     $serviceEnum = BackedEnums\Service::SMS;
 
-    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(BackedEnums\Attributes\Tag::class);
+    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(Unknown::class);
 
     expect($attributes)->toBe([]);
 });
@@ -136,7 +136,7 @@ it('returns an empty array when repeatable attributes are missing from a backed 
 it('returns an empty array when repeatable attributes are missing from a unit enum', function () {
     $serviceEnum = UnitEnums\Service::EMAIL;
 
-    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(UnitEnums\Attributes\Tag::class);
+    $attributes = Reflect::on($serviceEnum)->getAllAttributeInstances(Unknown::class);
 
     expect($attributes)->toBe([]);
 });

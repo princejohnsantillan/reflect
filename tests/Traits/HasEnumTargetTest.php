@@ -5,7 +5,7 @@ use PrinceJohn\Reflect\Traits\HasEnumTarget;
 use Reflect\Tests\Fixtures\BackedEnums;
 use Reflect\Tests\Fixtures\UnitEnums;
 
-covers(HasEnumTarget::class);
+mutates(HasEnumTarget::class);
 
 it('can check if the attribute is used in the backed enum provided', function () {
     expect(BackedEnums\Attributes\KindOfService::isOnEnum(BackedEnums\Provider::SENDGRID))->toBeTrue();
@@ -46,7 +46,6 @@ it('can get an instance of the attribute using the unit enum provided or fail if
     expect(fn () => BackedEnums\Attributes\KindOfService::onEnum(UnitEnums\Provider::SENDGRID))
         ->toThrow(AttributeNotFoundException::class);
 });
-
 it('can get all attribute instances of a repeatable attribute on a backed enum', function () {
     $serviceEnum = BackedEnums\Service::EMAIL;
 
@@ -57,10 +56,6 @@ it('can get all attribute instances of a repeatable attribute on a backed enum',
     foreach ($attributes as $attribute) {
         expect($attribute)->toBeInstanceOf(BackedEnums\Attributes\Tag::class);
     }
-
-    $serviceEnum = BackedEnums\Service::SMS;
-
-    expect(BackedEnums\Attributes\Tag::allOnEnum($serviceEnum))->toBe([]);
 });
 
 it('can get all attribute instances of a repeatable attribute on a unit enum', function () {
@@ -73,8 +68,20 @@ it('can get all attribute instances of a repeatable attribute on a unit enum', f
     foreach ($attributes as $attribute) {
         expect($attribute)->toBeInstanceOf(UnitEnums\Attributes\Tag::class);
     }
+});
 
+it('returns an empty array when repeatable attributes are missing from a backed enum', function () {
+    $serviceEnum = BackedEnums\Service::SMS;
+
+    $attributes = BackedEnums\Attributes\Tag::allOnEnum($serviceEnum);
+
+    expect($attributes)->toBe([]);
+});
+
+it('returns an empty array when repeatable attributes are missing from a unit enum', function () {
     $serviceEnum = UnitEnums\Service::EMAIL;
 
-    expect(UnitEnums\Attributes\Tag::allOnEnum($serviceEnum))->toBe([]);
+    $attributes = UnitEnums\Attributes\Tag::allOnEnum($serviceEnum);
+
+    expect($attributes)->toBe([]);
 });

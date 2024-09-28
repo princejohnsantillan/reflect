@@ -2,7 +2,7 @@
 
 use PrinceJohn\Reflect;
 
-covers(Reflect\Reflect::class);
+mutates(Reflect\Reflect::class);
 
 enum BackedEnumTest: string
 {
