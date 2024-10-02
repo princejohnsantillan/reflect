@@ -46,7 +46,7 @@ AFTER:
 ```php
 use PrinceJohn\Reflect\Traits\HasEnumTarget;
 
-#[\Attribute]
+#[Attribute(Attribute::TARGET_CLASS_CONSTANT)]
 class Price{
     use HasEnumTarget;
     
@@ -57,7 +57,7 @@ class Price{
 ```php
 use PrinceJohn\Reflect\Traits\HasEnumTarget;
 
-#[\Attribute]
+#[Attribute(Attribute::TARGET_CLASS_CONSTANT)]
 class Color{
     use HasEnumTarget;
     
