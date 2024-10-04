@@ -5,7 +5,7 @@ namespace Reflect\Tests\Fixtures\BackedEnums\Attributes;
 use Attribute;
 use PrinceJohn\Reflect\Traits\HasEnumTarget;
 
-#[Attribute]
+#[Attribute(Attribute::TARGET_CLASS_CONSTANT)]
 class CostOfService
 {
     use HasEnumTarget;
