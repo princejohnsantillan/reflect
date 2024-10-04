@@ -11,4 +11,12 @@ class Reflect
     {
         return Enum\Reflect::on($enum);
     }
+
+    /**
+     * @param  object|class-string  $class
+     */
+    public static function class(object|string $class): Class\Reflect
+    {
+        return Class\Reflect::on($class);
+    }
 }
